@@ -1,8 +1,8 @@
 typedef pair<int, int> ii;
 typedef pair<ii, int> ppi;
 
-const int maxn = 100010;
-const int maxlg = 18;
+const int maxn = 100010; // edit here
+const int maxlg = 18; // edit here
 
 int sp[maxlg][maxn];
 string s;
@@ -10,7 +10,7 @@ string s;
 void BuildTable() {
 	MEMSET(sp, -1);
 	vector<ppi> temp;
-	for(int i=0; i<s.size(); i++) sp[0][i] = s[i] - 'a';
+	for(int i=0; i<s.size(); i++) sp[0][i] = s[i] - 'a'; // edit here
 	for(int p = 1; (1 << p) <= s.size(); p++) {
 		temp.clear();
 		for(int i = 0; i + (1 << p) - 1 < s.size(); i++) {
@@ -27,7 +27,6 @@ void BuildTable() {
 
 int LongestCommonPrefix(int i, int j) {
 	int len = 0;
-	if(i == j) return s.size() - i;
 	for(int p = 17; p >= 0 and i < s.size() and j < s.size(); p--) {
 		if(j + (1<<p) - 1 > s.size() - 1) continue;
 		if(sp[p][i] == sp[p][j]) {
