@@ -49,7 +49,7 @@ PT RotateCW90wrtPoint(PT p, PT org) {
 }
 PT RotateCCWwrtPoint(PT p, double t, PT org) {
 	p = p - org;
-	RotateCW90(p, t);
+	RotateCWW(p, t);
 	p = p + org;
 	return p;
 } 
