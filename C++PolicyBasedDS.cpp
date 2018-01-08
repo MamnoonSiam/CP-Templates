@@ -47,6 +47,8 @@ int main()
 {
 	stl_trie t;
 	// Insert some entries.
+	// By seeing t.insert(str).second we can
+	// know if string str is in the set or not
 	assert(t.insert("I").second == true);
 	assert(t.insert("wish").second == true);
 	assert(t.insert("that").second == true);
