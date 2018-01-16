@@ -1,3 +1,7 @@
+/*
+__uint128_t can hold upto +340282366920938463463374607431768211455 = ((1<<128)-1)
+*/
+
 typedef __int128_t int128; // or __int128
 typedef __uint128_t uint128; // or unsigned __int128
 
