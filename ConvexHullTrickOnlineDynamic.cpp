@@ -1,4 +1,4 @@
-
+// From: https://github.com/RezwanArefin01/CodeTemplate/blob/master/ConvexHullTrick%20(Dynamic%20Online).cpp
 // Keeps upper hull for maximums. 
 // add lines with -m and -b and return -ans to 
 // make this code working for minimums. 
