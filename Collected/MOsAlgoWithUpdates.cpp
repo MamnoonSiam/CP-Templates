@@ -1,3 +1,4 @@
+// From: https://github.com/RezwanArefin01/CodeTemplate/blob/master/MO'a%20algo%20with%20Updates.cpp
 #include <bits/stdc++.h>
 using namespace std;
 
