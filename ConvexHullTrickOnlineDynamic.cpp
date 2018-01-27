@@ -10,12 +10,12 @@ struct chtDynamic {
 		ll m, b; double x; 
 		ll val; bool isQuery; 
 		line(ll _m = 0, ll _b = 0) : 
-			m(_m), b(_b), val(0), x(-inf), isQuery(false) {} 
+			m(_m), b(_b), val(0), x(-numeric_limits<double>::infinity()), isQuery(false) {} 
 		
 		ll eval(ll x) const { return m * x + b;	}
 		bool parallel(const line &l) const { return m == l.m; }
 		double intersect(const line &l) const {
-			return parallel(l) ? inf : 1.0 * (l.b - b) / (m - l.m);
+			return parallel(l) ? numeric_limits<double>::infinity() : 1.0 * (l.b - b) / (m - l.m);
 		}
 		bool operator < (const line &l) const {
 			if(l.isQuery) return x < l.val;
@@ -64,7 +64,7 @@ struct chtDynamic {
 	}
 
 	ll query(ll x) const { 
-		if(hull.empty()) return -inf;
+		if(hull.empty()) return -numeric_limits<double>::infinity();
 		line q; q.val = x, q.isQuery = 1;
 		iter it = --hull.lower_bound(q);
 		return it -> eval(x);
