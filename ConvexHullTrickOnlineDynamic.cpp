@@ -3,8 +3,6 @@
 // add lines with -m and -b and return -ans to 
 // make this code working for minimums. 
 
-const double inf = 1e18;
-
 struct chtDynamic {  
 	struct line {
 		ll m, b; double x; 
