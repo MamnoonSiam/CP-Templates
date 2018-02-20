@@ -1,4 +1,5 @@
-const ll is_query = -(1LL<<62);
+// does everything for maximums
+const ll is_query = LLONG_MIN+1LL;
 struct Line {
     ll m, b;
     mutable function<const Line*()> succ;
@@ -22,7 +23,7 @@ struct HullDynamic : public multiset<Line> { // will maintain upper hull for max
         return (x->b - y->b)*(z->m - y->m) >= (y->b - z->b)*(y->m - x->m);
     }
     void insert_line(ll m, ll b) {
-        auto y = insert({ m, b });
+        auto y = insert({ m, b }); // edit here for minimumns
         y->succ = [=] { return next(y) == end() ? 0 : &*next(y); };
         if (bad(y)) { erase(y); return; }
         while (next(y) != end() && bad(next(y))) erase(next(y));
@@ -30,6 +31,6 @@ struct HullDynamic : public multiset<Line> { // will maintain upper hull for max
     }
     ll eval(ll x) {
         auto l = *lower_bound((Line) { x, is_query });
-        return l.m * x + l.b;
+        return l.m * x + l.b; // edit here for minimums
     }
 };
