@@ -3,7 +3,7 @@
 // add lines with -m and -b and return -ans to 
 // make this code working for minimums. 
 
-struct chtDynamic {  
+struct ConvexHullTrick {  
 	struct line {
 		ll m, b; double x; 
 		ll val; bool isQuery; 
@@ -43,7 +43,7 @@ struct chtDynamic {
 	}
 
 	void addLine(ll m, ll b) { 
-		line l(m, b); 
+		line l(m, b); // edit here l(-m, -b) for minimuns
 		iter it = hull.lower_bound(l); 
 		if(it != hull.end() && l.parallel(*it)) {
 			if(it -> b < b) it = hull.erase(it); 
@@ -61,11 +61,13 @@ struct chtDynamic {
 		if(cNext(it)) update(next(it));
 	}
 
-	ll query(ll x) const { 
-		if(hull.empty()) return -numeric_limits<double>::infinity();
-		line q; q.val = x, q.isQuery = 1;
-		iter it = --hull.lower_bound(q);
-		return it -> eval(x);
+	ll query(ll x, ll ret = 0LL) const { 
+		if(hull.empty()) ret = LLONG_MIN+1LL;
+		else {
+			line q; q.val = x, q.isQuery = 1;
+			iter it = --hull.lower_bound(q);
+			ret = it -> eval(x);
+		} return ret; // edit here for minimuns
 	}
 } ds;
  
