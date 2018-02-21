@@ -11,7 +11,7 @@ struct Line {
         return b - s->b < (s->m - m) * x;
     }
 };
-struct HullDynamic : public multiset<Line> { // will maintain upper hull for maximum
+struct HullDynamic : public multiset<Line> { // will maintain lower hull for maximum
     bool bad(iterator y) {
         auto z = next(y);
         if (y == begin()) {
