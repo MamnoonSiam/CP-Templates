@@ -20,7 +20,7 @@ struct HullDynamic : public multiset<Line> { // will maintain lower hull for max
         }
         auto x = prev(y);
         if (z == end()) return y->m == x->m && y->b <= x->b;
-        return (x->b - y->b)*(z->m - y->m) >= (y->b - z->b)*(y->m - x->m);
+        return 1.0*(x->b - y->b)*(z->m - y->m) >= 1.0*(y->b - z->b)*(y->m - x->m);
     }
     void insert_line(ll m, ll b) {
         auto y = insert({ m, b }); // edit here for minimumns
