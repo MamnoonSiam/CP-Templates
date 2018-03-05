@@ -31,6 +31,6 @@ struct HullDynamic : public multiset<Line> { // will maintain lower hull for max
     }
     ll eval(ll x) {
         auto l = *lower_bound((Line) { x, is_query });
-        return l.m * x + l.b; // edit here for minimums
+        return (l.m * x + l.b); // edit here for minimums
     }
 };
