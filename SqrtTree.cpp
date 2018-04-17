@@ -47,12 +47,12 @@ public:
         if (l + 1 == r) {
             return op(v[l], v[r]);
         }
-        #define layer (onLayer[clz[l ^ r]])
-        #define bSzLog ((layers[layer]+1) >> 1)
-        #define bCntLog (layers[layer] >> 1)
-        #define lBound ((l >> layers[layer]) << layers[layer])
-        #define lBlock (((l - lBound) >> bSzLog) + 1)
-        #define rBlock (((r - lBound) >> bSzLog) - 1)
+        int layer = (onLayer[clz[l ^ r]]);
+        int bSzLog = ((layers[layer]+1) >> 1);
+        int bCntLog = (layers[layer] >> 1);
+        int lBound = ((l >> layers[layer]) << layers[layer]);
+        int lBlock = (((l - lBound) >> bSzLog) + 1);
+        int rBlock = (((r - lBound) >> bSzLog) - 1);
         int ans = suf[layer][l];
         if (lBlock <= rBlock) {
             ans = op(ans, between[layer][lBound + (lBlock << bCntLog) + rBlock]);
