@@ -15,7 +15,7 @@ inline int read_int(int &res) {
     if (sign) { c = getchar(); }
 #endif
 
-    int res = c - '0';
+    res = c - '0';
     while (c = getchar(), c >= '0' && c <= '9')
         res = res * 10 + (c - '0');
 #ifdef USE_SIGN
