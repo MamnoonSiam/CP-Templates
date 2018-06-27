@@ -1,8 +1,9 @@
+char buf[10];
 inline void write_int(int x) {
 #ifdef USE_SIGN
     if (x < 0) { putchar('-'); x = -x; }
 #endif
-    char buf[10], *p = buf;
+    char *p = buf;
     do { *p++ = '0' + x % 10; x /= 10; } while (x);
     do { putchar(*--p); } while (p > buf);
 }
@@ -19,7 +20,7 @@ inline int read_int(int &res) {
     while (c = getchar(), c >= '0' && c <= '9')
         res = res * 10 + (c - '0');
 #ifdef USE_SIGN
-    return sign ? -res : res;
+    return res = sign ? -res : res;
 #else
     return res;
 #endif
