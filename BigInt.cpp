@@ -115,7 +115,9 @@ struct Bigint {
         } s = oriS; r.s = s * b.s;
         r.n(); return r;
     }
-    inline Bigint operator % (const Bigint &b) {
-        return (*this)-(*this)/b*b;
-    }
+    inline Bigint operator % (const Bigint &b) { return (*this)-(*this)/b*b; }
+    inline void operator *= (Bigint b) { (*this) = (*this) * b; }
+    inline void operator /= (Bigint b) { (*this) = (*this) / b; }
+    inline void operator += (Bigint b) { (*this) = (*this) + b; }
+    inline void operator -= (Bigint b) { (*this) = (*this) - b; }
 };
