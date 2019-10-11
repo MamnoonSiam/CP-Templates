@@ -6,7 +6,7 @@
 using namespace std;
 namespace algebra {
 	const int inf = 1e9;
-	const int magic = 500; // threshold for sizes to run the naive algo
+	const int magic = -1; // threshold for sizes to run the naive algo
 	//        dafaq with threshold
 	
 	namespace fft {
