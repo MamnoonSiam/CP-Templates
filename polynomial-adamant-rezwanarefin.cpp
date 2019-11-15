@@ -43,7 +43,7 @@ namespace algebra {
 		    if(w.empty()) w = {{0, 0}, {1, 0}}; 
 		    
 		    sz = __builtin_ctz(w.size()); 
-		    w.resize(n);
+		    w.resize(max(2, n));
 
 		    // w[n + i] = w_{2n}^i, n power of 2, i < n
 		    while((1 << sz) < n) {
