@@ -319,7 +319,7 @@ namespace algebra {
 		poly integr() { // calculate integral with C = 0
 			vector<T> res = {0};
 			for(int i = 0; i <= deg(); i++) {
-				res.push_back(a[i] / T(i + 1));
+				res.push_back(a[i] / T(i + 1)); // wtf? preprocess ffs
 			}
 			return res;
 		}
@@ -355,7 +355,7 @@ namespace algebra {
 		poly pow_slow(size_t k, size_t n) { // if k is small
 			return k ? k % 2 ? (*this * pow_slow(k - 1, n)).mod_xk(n) : (*this * *this).mod_xk(n).pow_slow(k / 2, n) : T(1);
 		}
-		poly pow(size_t k, size_t n) { // calculate p^k(n) mod x^n
+		poly pow(size_t k, size_t n) { // calculate p^k(n) mod x^n, lol, useless though
 			if(is_zero()) {
 				return *this;
 			}
