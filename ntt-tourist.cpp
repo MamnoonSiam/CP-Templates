@@ -3,16 +3,6 @@ using namespace std;
 
 const int md = 998244353;
 
-inline void add(int &a, int b) {
-  a += b;
-  if (a >= md) a -= md;
-}
-
-inline void sub(int &a, int b) {
-  a -= b;
-  if (a < 0) a += md;
-}
-
 inline int mul(int a, int b) {
 #if !defined(_WIN32) || defined(_WIN64)
   return (int) ((long long) a * b % md);
@@ -115,12 +105,10 @@ namespace ntt {
     for (int k = 1; k < n; k <<= 1) {
       for (int i = 0; i < n; i += 2 * k) {
         for (int j = 0; j < k; j++) {
-          int x = a[i + j];
-          int y = mul(a[i + j + k], roots[j + k]);
-          a[i + j] = x + y - md;
-          if (a[i + j] < 0) a[i + j] += md;
-          a[i + j + k] = x - y + md;
-          if (a[i + j + k] >= md) a[i + j + k] -= md;
+          int &u = a[i + j], &v = a[i + j + k];
+          int x = u, y = mul(v, roots[j + k]);
+          u = x + y >= md ? x + y - md : x + y; // (x+y) % md
+          v = x - y < 0 ? x - y + md : x - y; // (x-y) % md
         }
       }
     }
