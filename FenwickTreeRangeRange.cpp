@@ -7,6 +7,7 @@ struct fenwick_tree {
     B1 = new T[N+1], B2 = new T[N+1];
     #define clr(v) fill(v, v+(N+1), 0)
     clr(B1), clr(B2);
+    #undef clr
   }
   ~fenwick_tree() { delete [] B1, delete [] B2; }
   void add(T* B, int idx, T value) {
