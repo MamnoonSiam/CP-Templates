@@ -170,7 +170,6 @@ namespace algebra {
     
     poly(){}
     poly(T a0) : a{a0}{normalize();}
-    poly(vector<T> t) : a(t){normalize();}
 
     operator vector<T>() {return a;}
     
@@ -534,11 +533,8 @@ using namespace algebra;
 signed main() {
   ios::sync_with_stdio(0);
   cin.tie(0);
-  polyn a({-4, 0, 3, -1});
+  polyn a({-4, 1, 3, -1});
   polyn b({1, 0, -1});
-  polyn c = b.inv(5000);
-  polyn d = a * c;
-  cout << d[2020] << endl;
-  // c.print();
+  polyn c = b.inv(1000000);
   return 0;
 }
