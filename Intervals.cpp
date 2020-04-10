@@ -5,6 +5,13 @@ using ll = long long;
 using ii = pair<int, int>;
 using vi = vector<int>;
 
+struct interval {
+  int l, r, x; // A[l...r] = x
+  bool operator < (const interval& o) const {
+    return l < o.l;
+  }
+};
+
 int n;
 set<interval> st;
 
