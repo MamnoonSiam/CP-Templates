@@ -1,0 +1,1 @@
+/home/mamnoonsiam/.config/sublime-text-3/Packages/User/

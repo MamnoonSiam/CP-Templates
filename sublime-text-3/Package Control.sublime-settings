@@ -1,0 +1,17 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Anaconda",
+		"LaTeX-cwl",
+		"LaTeXTools",
+		"LaTeXYZ",
+		"Package Control"
+	],
+	"repositories":
+	[
+	]
+}

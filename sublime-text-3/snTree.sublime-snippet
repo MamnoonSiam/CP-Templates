@@ -1,0 +1,37 @@
+<snippet>
+	<content><![CDATA[
+/**
+ * Author: Lucian Bicsi
+ * Date: 2017-10-31
+ * License: CC0
+ * Source: folklore
+ * Description: Zero-indexed max-tree. Bounds are inclusive to the left and exclusive to the right. Can be changed by modifying T, f and unit.
+ * Time: O(\log N)
+ * Status: stress-tested
+ */
+
+struct Tree {
+  typedef int T;
+  static constexpr T unit = INT_MIN;
+  T f(T a, T b) { return max(a, b); } // (any associative fn)
+  vector<T> s; int n;
+  Tree(int _n = 0, T def = unit) : s(2*_n, def), n(_n) {}
+  void update(int pos, T val) {
+    for (s[pos += n] = val; pos >>= 1;) // do u mean += val???
+      s[pos] = f(s[pos << 1], s[pos << 1 | 1]);
+  }
+  T query(int b, int e) { // query [b, e)
+    T ra = unit, rb = unit;
+    for (b += n, e += n; b < e; b >>= 1, e >>= 1) {
+      if (b & 1) ra = f(ra, s[b++]);
+      if (e & 1) rb = f(s[--e], rb);
+    }
+    return f(ra, rb);
+  }
+};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>snTree</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

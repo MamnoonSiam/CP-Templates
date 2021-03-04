@@ -1,0 +1,21 @@
+{
+	"auto_complete_triggers":
+	[
+		{
+			"characters": "<",
+			"selector": "text.html"
+		},
+		{
+			"characters": "\\",
+			"selector": "text.tex.latex"
+		}
+	],
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
+	"font_face": "Inconsolata",
+	"font_size": 13,
+	"ignored_packages":
+	[
+	],
+	"theme": "Default.sublime-theme",
+	"wrap_width": 75
+}

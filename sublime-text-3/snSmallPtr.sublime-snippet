@@ -1,0 +1,32 @@
+<snippet>
+  <content><![CDATA[
+#ifdef LOCAL
+const int buf_size = 100000;
+#else
+const int buf_size = 240000000;
+#endif
+
+static char buf[buf_size];
+void* operator new(size_t s) {
+  static size_t i = sizeof buf;
+  // assert(s < i);
+  return (void*)&buf[i -= s];
+}
+void operator delete(void*) {}
+
+template<class T> struct ptr {
+  unsigned ind;
+  ptr(T* p = 0) : ind(p ? unsigned((char*)p - buf) : 0) {
+    // assert(ind < sizeof buf);
+  }
+  T& operator*() const { return *(T*)(buf + ind); }
+  T* operator->() const { return &**this; }
+  T& operator[](int a) const { return (&**this)[a]; }
+  explicit operator bool() const { return ind; }
+};
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>snSmallPtr</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <!-- <scope>source.python</scope> -->
+</snippet>

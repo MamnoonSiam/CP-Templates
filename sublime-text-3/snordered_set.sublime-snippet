@@ -1,0 +1,9 @@
+<snippet>
+  <content><![CDATA[
+tree<${1}, null_type, less<${1}>, rb_tree_tag, tree_order_statistics_node_update> ${2};
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>snordered_set</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <!-- <scope>source.python</scope> -->
+</snippet>

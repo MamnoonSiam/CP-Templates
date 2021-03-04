@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[
+struct ordered_multiset {
+  tree<ii, null_type, less<ii>, rb_tree_tag, tree_order_statistics_node_update> os;
+  map<int, int> mp;
+  void insert(int x) {
+    os.insert(ii(x, ++mp[x]));
+  }
+  void erase(int x) {
+    os.erase(ii(x, mp[x]--));
+  }
+  int leq(int x) {
+    return (int)os.order_of_key(ii(x, INT_MAX));
+  }
+  int geq(int x) {
+    return sz(os) - (int)os.order_of_key(ii(x, INT_MIN));
+  }
+};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>snordered_multiset</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

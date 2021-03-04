@@ -1,0 +1,49 @@
+<snippet>
+	<content><![CDATA[
+struct Node {
+  Node *l = 0, *r = 0;
+  int lo, hi;
+  int val;
+  int lz;
+  Node(int _lo,int _hi) : lo(_lo), hi(_hi) {}
+  Node(vi& v, int _lo, int _hi) : lo(_lo), hi(_hi) {
+    if (lo + 1 < hi) {
+      int mid = lo + (hi - lo)/2;
+      l = new Node(v, lo, mid); r = new Node(v, mid, hi);
+      val = l -> val + r -> val;
+    }
+    else val = v[lo];
+  }
+  int query(int L, int R) {
+    if (R <= lo || hi <= L) return 0; // null identity
+    if (L <= lo && hi <= R) return val;
+    push();
+    return l -> query(L, R) + r -> query(L, R);
+  }
+  void upd(int x) {
+    val += x * (hi - lo);
+    lz += x;
+  }
+  void add(int L, int R, int x) {
+    if (R <= lo || hi <= L) return;
+    if (L <= lo && hi <= R) {
+      upd(x);
+    }
+    else {
+      push(), l->add(L, R, x), r->add(L, R, x);
+      val = l -> val + r -> val;
+    }
+  }
+  void push() {
+    if(lo + 1 < hi) {
+      l -> upd(lz), r -> upd(lz);
+    }
+    lz = 0;
+  }
+};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>snLazySegmentTree</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

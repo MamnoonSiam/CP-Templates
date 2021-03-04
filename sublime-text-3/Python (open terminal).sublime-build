@@ -1,0 +1,17 @@
+{
+	// "shell_cmd": "python -u \"$file\"",
+	// "shell_cmd": "gnome-terminal -- /bin/bash -c 'python -u \"$file\"; echo Press ENTER to continue...; read line'",
+	"shell_cmd": "gnome-terminal -- /bin/bash -c 'pypy3 -u \"$file\"; echo Press ENTER to continue...; read line'",
+	"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+	"selector": "source.python",
+
+	"env": {"PYTHONIOENCODING": "utf-8"},
+
+	"variants":
+	[
+		{
+			"name": "Syntax Check",
+			"shell_cmd": "python -m py_compile \"${file}\"",
+		}
+	]
+}
