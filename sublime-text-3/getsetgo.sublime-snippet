@@ -3,7 +3,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/* sorry, this is the bare minimum :'( */
 using ll = long long;
 using ii = pair<int, int>;
 using vi = vector<int>;
@@ -26,8 +25,6 @@ int main(int argc, char const *argv[])
 * use std::array instead of std::vector, if u can
 * overflow?
 * array bounds
-* ffs, write down shits
-* think
 */
 ]]></content>
   <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->

@@ -9,9 +9,11 @@
 		"LaTeX-cwl",
 		"LaTeXTools",
 		"LaTeXYZ",
+		"Monokai Dark",
 		"Package Control"
 	],
 	"repositories":
 	[
+		"https://github.com/thatal/Monokai-Dark"
 	]
 }
