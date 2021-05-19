@@ -1,0 +1,54 @@
+<snippet>
+	<content><![CDATA[
+namespace modular {
+  inline int mul() { return 1; }
+  template <typename... V>
+  inline int mul(int a, V... v) {
+  #if !defined(_WIN32) || defined(_WIN64)
+    return (int) ((long long) a * mul(v...) % md);
+  #endif
+    unsigned long long x = (long long) a * mul(v...);
+    unsigned xh = (unsigned) (x >> 32), xl = (unsigned) x, d, m;
+    asm(
+      "divl %4; \n\t"
+      : "=a" (d), "=d" (m)
+      : "d" (xh), "a" (xl), "r" (md)
+    );
+    return m;
+  }
+  template<typename... V>
+  inline void mulby(int &a, V... v) {
+    a = mul(a, v...);
+  }
+  inline int add() { return 0; }
+  template<typename... V>
+  inline int add(int x, V... v) {
+    x += add(v...); if(x >= md) x -= md; return x;
+  }
+  template<typename... V>
+  inline void addto(int &a, V... v) {
+    a = add(a, v...);
+  }
+  inline int sub(int a, int b) {
+    if((a -= b) < 0) a += md;
+    return a;
+  }
+  inline void subfrom(int &a, int b) {
+    if((a -= b) < 0) a += md;
+  }
+  inline int qpow(int b, int p) {
+    if(p < 0) {
+      return qpow(qpow(b, -p), md-2);
+    } int ret = 1;
+    while(p) {
+      if(p & 1) mulby(ret, b);
+      mulby(b, b); p >>= 1;
+    } return ret;
+  }
+} using namespace modular;
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>snMod</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
