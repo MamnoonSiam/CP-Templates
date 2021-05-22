@@ -64,7 +64,7 @@ string to_string(queue<T> qu) {
   return to_string(v_qu);
 }
 template<typename T>
-string to_string(priority_queue<T> pq) {
+string to_string(std::priority_queue<T> pq) {
   vector<T> v_pq;
   while(!pq.empty()) {
     v_pq.push_back(pq.top());
@@ -73,7 +73,7 @@ string to_string(priority_queue<T> pq) {
   return to_string(v_pq);
 }
 template<typename T>
-string to_string(priority_queue<T, vector<T>, greater<T>> pq) {
+string to_string(std::priority_queue<T, vector<T>, greater<T>> pq) {
   vector<T> v_pq;
   while(!pq.empty()) {
     v_pq.push_back(pq.top());
