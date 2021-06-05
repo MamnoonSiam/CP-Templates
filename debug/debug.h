@@ -1,3 +1,7 @@
+template<typename T>
+string to_string(T x) {
+  return std::to_string(x);
+}
 string to_string(char ch) {
   return string(1, ch);
 }
